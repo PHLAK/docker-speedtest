@@ -1,25 +1,27 @@
-FROM ubuntu:18.04
+FROM alpine:3.11
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
+# Speedtest Version
+ARG SPEEDTEST_VERSION=1.0.0
+
+# Set tarball file URL
+ARG TARBALL_URL=https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${SPEEDTEST_VERSION}-x86_64-linux.tgz
+
+# Create Speedtest directories
+RUN mkdir -pv /opt/speedtest
+
 # Create non-root user
-RUN adduser --disabled-password --shell /sbin/nologin speedtest
+RUN adduser -DHs /sbin/nologin speedtest
 
 # Create the config file
 COPY files/speedtest-cli.json /home/speedtest/.config/ookla/speedtest-cli.json
 RUN chown -R speedtest /home/speedtest/.config
 
-# Install dependencies
-RUN apt-get update && apt-get --assume-yes install apt-transport-https dirmngr \
-    ca-certificates gnupg lsb-release tzdata && rm -rf /var/lib/apt/lists/*
-
-# Add apt repository
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
-RUN echo "deb https://ookla.bintray.com/debian $(lsb_release -sc) main" \
-    | tee /etc/apt/sources.list.d/speedtest.list
-
-# Install Speedtest
-RUN apt-get update && apt-get --assume-yes install speedtest \
-    && rm -rf /var/lib/apt/lists/*
+# Install dependencies and speedtest and chown files
+RUN apk add --update ca-certificates tar tzdata wget \
+    && wget -qO- ${TARBALL_URL} | tar -xz -C /opt/speedtest \
+    && apk del tar wget && rm -rf /var/cache/apk/* \
+    && chown -R speedtest:speedtest /opt/speedtest
 
 # Set the user
 USER speedtest
@@ -28,4 +30,4 @@ USER speedtest
 WORKDIR /home/speedtest
 
 # Set entrypoint
-ENTRYPOINT ["/usr/bin/speedtest"]
+ENTRYPOINT ["/opt/speedtest/speedtest"]

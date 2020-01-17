@@ -10,7 +10,7 @@ docker-speedtest
 </p>
 
 <p align="center">
-    Docker image for <a href="https://www.speedtest.net/apps/cli">Speedtest CLI</a>.
+    Docker image for the <a href="https://www.speedtest.net/apps/cli">Speedtest CLI</a>.
 </p>
 
 ---

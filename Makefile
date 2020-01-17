@@ -1,5 +1,5 @@
 IMAGE_NAME="phlak/speedtest"
-IMAGE_TAG="local"
+IMAGE_TAG="$$(grep 'ARG SPEEDTEST_VERSION' Dockerfile | awk -F = '{print $$2}')"
 
 build:
 	@docker build --force-rm --pull --tag $(IMAGE_NAME):$(IMAGE_TAG) .
