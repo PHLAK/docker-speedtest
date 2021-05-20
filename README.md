@@ -13,7 +13,7 @@ docker-speedtest
     <a href="https://hub.docker.com/repository/docker/phlak/speedtest/tags"><img alt="Docker Image Version" src="https://img.shields.io/docker/v/phlak/speedtest?style=flat-square&sort=semver"></a>
     <a href="https://hub.docker.com/repository/docker/phlak/speedtest"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/phlak/speedtest?style=flat-square"></a>
     <a href="https://github.com/PHLAK/docker-speedtest/blob/master/LICENSE"><img src="https://img.shields.io/github/license/PHLAK/docker-speedtest?style=flat-square" alt="License"></a>
-    <a href="https://hub.docker.com/repository/docker/phlak/speedtest/builds"><img alt="Docker Build Status" src="https://img.shields.io/docker/build/phlak/speedtest?style=flat-square"></a>
+    <a href="https://hub.docker.com/repository/docker/phlak/speedtest/builds"><img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/phlak/speedtest?style=flat-square"></a>
 </p>
 
 <p align="center">
@@ -42,7 +42,7 @@ Run the container:
 Troubleshooting
 ---------------
 
-For general help and support join our [Slack Workspace](https://ln.phlak.net/join-slack).
+For general help and support join our [GitHub Discussions](https://github.com/PHLAK/docker-speedtest/discussions) or reach out on [Twitter](https://twitter.com/PHLAK).
 
 Please report bugs to the [GitHub Issue Tracker](https://github.com/PHLAK/speedtest/issues).
 
