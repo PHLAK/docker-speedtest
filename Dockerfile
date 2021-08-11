@@ -5,7 +5,7 @@ LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 ARG SPEEDTEST_VERSION=1.0.0
 
 # Set tarball file URL
-ARG TARBALL_URL=https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-${SPEEDTEST_VERSION}-x86_64-linux.tgz
+ARG TARBALL_URL=https://install.speedtest.net/app/cli/ookla-speedtest-${SPEEDTEST_VERSION}-x86_64-linux.tgz
 
 # Create Speedtest directories
 RUN mkdir -pv /opt/speedtest
