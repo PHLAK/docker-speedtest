@@ -4,14 +4,13 @@ on:
   push:
     branches: ['master']
     tags: ['*']
-  pull_request:
-    branches: ['master']
 
 env:
   DOCKER_HUB_USER: phlak
 
 jobs:
-  build-container:
+  build-and-push:
+    name: Build & Push
     runs-on: ubuntu-latest
 
     steps:
