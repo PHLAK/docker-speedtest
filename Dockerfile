@@ -2,11 +2,10 @@ FROM alpine:3.14.2
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Speedtest Version
-ARG SPEEDTEST_VERSION=1.0.0
+ARG SPEEDTEST_VERSION=1.1.0
 
 # Set tarball file URL
 ARG TARBALL_URL=https://install.speedtest.net/app/cli/ookla-speedtest-${SPEEDTEST_VERSION}-x86_64-linux.tgz
-
 # Create Speedtest directories
 RUN mkdir -pv /opt/speedtest
 
