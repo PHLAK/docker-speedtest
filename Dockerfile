@@ -2,12 +2,10 @@ FROM alpine:3.17.0
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Speedtest Version
-ARG SPEEDTEST_VERSION=1.1.0
+ARG SPEEDTEST_VERSION=1.2.0
 
 # Set tarball file URL
-ARG TARBALL_URL=https://install.speedtest.net/app/cli/ookla-speedtest-${SPEEDTEST_VERSION}-x86_64-linux.tgz
-# Create Speedtest directories
-RUN mkdir -pv /opt/speedtest
+ARG TARBALL_URL=https://install.speedtest.net/app/cli/ookla-speedtest-${SPEEDTEST_VERSION}-linux-x86_64.tgz
 
 # Create non-root user
 RUN adduser -DHs /sbin/nologin speedtest
@@ -18,9 +16,8 @@ RUN chown -R speedtest /home/speedtest/.config
 
 # Install dependencies and speedtest and chown files
 RUN apk add --update ca-certificates tar tzdata wget \
-    && wget -qO- ${TARBALL_URL} | tar -xz -C /opt/speedtest \
-    && apk del tar wget && rm -rf /var/cache/apk/* \
-    && chown -R speedtest:speedtest /opt/speedtest
+    && wget -qO- ${TARBALL_URL} | tar -xz -C /usr/local/bin \
+    && apk del tar wget && rm -rf /var/cache/apk/*
 
 # Set the user
 USER speedtest
@@ -29,4 +26,4 @@ USER speedtest
 WORKDIR /home/speedtest
 
 # Set entrypoint
-ENTRYPOINT ["/opt/speedtest/speedtest"]
+ENTRYPOINT ["/usr/local/bin/speedtest"]
