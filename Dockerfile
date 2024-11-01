@@ -1,4 +1,4 @@
-FROM alpine:3.17.3
+FROM alpine:3.20.3
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 # Speedtest Version
